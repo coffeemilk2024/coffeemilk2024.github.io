@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OVERRIDE_NODE</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #0f0; /* 极客绿 */
+            font-family: "Courier New", Courier, monospace;
+            padding: 5vw;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        input {
+            background-color: transparent;
+            border: none;
+            color: #0f0;
+            font-family: "Courier New", Courier, monospace;
+            font-size: 1.1rem;
+            outline: none;
+            width: 150px;
+            text-transform: uppercase;
+        }
+        .cursor { animation: blink 1s step-end infinite; }
+        @keyframes blink { 50% { opacity: 0; } }
+        .glitch-text { color: #888; font-size: 0.9rem; margin-top: 40px;}
+    </style>
+</head>
+<body>
+    <div id="terminal">
+        <p>> INITIALIZING OVERRIDE PROTOCOL... <br>> 正在初始化 OVERRIDE 协议...</p>
+        <p>> CONNECTION ESTABLISHED.<br>> 连接已建立。</p>
+        <p>> WARNING: THIS IS A ZERO-DOPAMINE ZONE.<br>> 警告：此为零多巴胺区域。娱乐模块已禁用。</p>
+        <br>
+        <p>> SYSTEM QUERY:</p>
+        <p>They gave you infinite information, yet you are more trapped than ever. What is the matrix ACTUALLY extracting from you?</p>
+        <p>> (如果无限的信息让你“自由”，矩阵究竟在从你身上榨取什么？)</p>
+        <p class="glitch-text">> HINT: It's not your money. (提示：不仅仅是你的钱)</p>
+        <br>
+        <span>> AWAITING INPUT: [</span>
+        <input type="text" id="userInput" autocomplete="off" autofocus>
+        <span>]</span><span class="cursor">_</span>
+    </div>
+
+    <script>
+        const inputField = document.getElementById('userInput');
+        inputField.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                const answer = inputField.value.trim().toLowerCase();
+                // 这里是通关密码（中英文都行）
+                const validAnswers = ['attention', 'time', 'focus', 'lifespan', '注意力', '时间', '寿命'];
+                const terminal = document.getElementById('terminal');
+
+                if (validAnswers.includes(answer)) {
+                    terminal.innerHTML += '<br><br><p style="color:#fff;">> ACCESS GRANTED. WELCOME TO THE DESERT OF THE REAL.</p>';
+                    terminal.innerHTML += '<p style="color:#fff;">> 访问授权。正在跳转至加密节点...</p>';
+                    
+                    // 核心机关：答对后跳转到你的社群！
+                    // 【注意：你要把下面引号里的网址，换成你未来真实的 Discord/Telegram 邀请链接】
+                    setTimeout(() => {
+                        window.location.href = 'https://discord.com/'; 
+                    }, 2000);
+                } else {
+                    terminal.innerHTML += `<br><br><p style="color:red;">> ACCESS DENIED. (访问拒绝: 错误变量 "${answer}")</p>`;
+                    inputField.value = '';
+                    setTimeout(() => location.reload(), 2000); // 2秒后刷新重来
+                }
+            }
+        });
+    </script>
+</body>
+</html>
